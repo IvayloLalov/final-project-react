@@ -5,11 +5,13 @@ export default function Home() {
         <video autoPlay muted loop>
           <source src="video1.mp4" type="video/mp4" />
         </video>
-        {/* 
+
         <div className="content">
-          <h1>Heading</h1>
+          <h1>
+            Build your dream body <br /> with home-fitnes
+          </h1>
           <p>Lorem ipsum...</p>
-        </div> */}
+        </div>
       </div>
     </>
   );
