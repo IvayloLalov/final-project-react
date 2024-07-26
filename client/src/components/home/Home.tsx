@@ -6,12 +6,12 @@ export default function Home() {
           <source src="video1.mp4" type="video/mp4" />
         </video>
 
-        <div className="content">
+        {/* <div className="content">
           <h1>
-            Build your dream body <br /> with home-fitnes
+            Build your dream body <br /> with home-fitness
           </h1>
           <p>Lorem ipsum...</p>
-        </div>
+        </div> */}
       </div>
     </>
   );
