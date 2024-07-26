@@ -1,9 +1,9 @@
 export default function Login() {
   return (
-    <div className="login">
+    <div className="login-register">
       <h1>Login</h1>
       <form method="post">
-        <input type="text" name="email" placeholder="Email" required />
+        <input type="email" name="email" placeholder="Email" required />
         <input
           type="password"
           name="password"

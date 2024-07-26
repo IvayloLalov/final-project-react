@@ -1,9 +1,9 @@
 export default function Register() {
   return (
-    <div className="register">
+    <div className="login-register">
       <h1>Register</h1>
       <form method="post">
-        <input type="text" name="email" placeholder="Email" required />
+        <input type="email" name="email" placeholder="Email" required />
         <input type="text" name="username" placeholder="Username" required />
         <input
           type="password"

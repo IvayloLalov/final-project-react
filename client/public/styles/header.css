@@ -6,6 +6,7 @@ header {
   display: flex;
   justify-content: center;
   z-index: 10;
+  box-shadow: 0 0 15px 0 rgb(0, 0, 0);
 }
 
 header ul {
