@@ -1,0 +1,36 @@
+/* .about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 66ch;
+}
+
+h3 {
+  text-align: center;
+  color: aliceblue;
+} */
+
+.about h2 {
+  font-family: "Luckiest Guy", cursive;
+  font-size: 25px;
+  max-width: 44ch;
+  line-height: 2;
+  margin: 100px auto;
+  z-index: 10;
+  letter-spacing: 0.075ch;
+  color: wheat;
+  text-align: center;
+  --light-pos-x: 1; /* left: -1, center: 0, right: 1 */
+  --light-pos-y: -1; /* top: -1, center: 0, bottom: 1 */
+
+  --rim-size: 0.02ch;
+  --shadow-offset: 0.2ch;
+  --shadow-blur: 0.1ch;
+  text-shadow: calc(max(var(--rim-size), 1px) * var(--light-pos-x))
+      calc(max(var(--rim-size), 1px) * var(--light-pos-y)) hsl(0 0% 100%),
+    calc(max(var(--rim-size), 1px) * var(--light-pos-x) * -1)
+      calc(max(var(--rim-size), 1px) * var(--light-pos-y) * -1) hsl(0 0% 60%),
+    calc(var(--shadow-offset) * var(--light-pos-x) * -1)
+      calc(var(--shadow-offset) * var(--light-pos-y) * -1) var(--shadow-blur)
+      hsl(0 0% 50% / 0.75);
+}
