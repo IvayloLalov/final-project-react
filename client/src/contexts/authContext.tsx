@@ -5,7 +5,15 @@ import * as userService from "../services/userService";
 import usePersistedState from "../hooks/usePersistedState";
 import { AuthType } from "../types/AuthType";
 
-const AuthContext = createContext({});
+const AuthContext = createContext<AuthType>({
+  loginSubmitHandler: Function,
+  registerSubmitHandler: Function,
+  logoutHandler: Function,
+  username: "",
+  email: "",
+  userId: "",
+  isAuthenticated: false,
+});
 
 type ContextProviderProps = {
   children?: ReactNode;

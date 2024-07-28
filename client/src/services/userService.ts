@@ -17,3 +17,5 @@ export const login = async (email: string, password: string): Promise<User> => {
 };
 
 export const register = () => {};
+
+export const logout = () => fetch(`${baseUrl}/logout`);
