@@ -32,8 +32,21 @@ export const AuthProvider = ({ children }: ContextProviderProps) => {
     navigate("/");
   };
 
-  const registerSubmitHandler = () => {};
+  const registerSubmitHandler = async (values: any) => {
+    const result = await userService.register(
+      values.email,
+      values.username,
+      values.password
+    );
 
+    setAuth(result);
+    console.log("username", values.username);
+    console.log("result", result);
+
+    localStorage.setItem("accessToken", result?.accessToken);
+
+    navigate("/");
+  };
   const logoutHandler = () => {
     setAuth({});
     localStorage.removeItem("accessToken");
@@ -43,7 +56,7 @@ export const AuthProvider = ({ children }: ContextProviderProps) => {
     loginSubmitHandler,
     registerSubmitHandler,
     logoutHandler,
-    username: auth.username || auth.email,
+    username: auth.username,
     email: auth.email,
     userId: auth._id,
     isAuthenticated: !!auth.accessToken,

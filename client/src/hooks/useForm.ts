@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export default function useForm(
   submitHandler: any,
-  initialValues: { email: ""; password: "" }
+  initialValues: { email: ""; password: ""; username?: ""; rePassword?: "" }
 ) {
   const [values, setValues] = useState(initialValues);
 
