@@ -9,6 +9,8 @@ import Login from "./components/login/Login";
 import Register from "./components/register/Register";
 import AddWorkout from "./components/add-workout/AddWorkout";
 import Logout from "./components/logout/Logout";
+import AuthGuard from "./components/guards/AuthGuard";
+import LoggedGuard from "./components/guards/LoggedGuard";
 
 function App() {
   return (
@@ -17,10 +19,14 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/add-workout" element={<AddWorkout />} />
+          <Route element={<LoggedGuard />}>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+          </Route>
           <Route path="/logout" element={<Logout />} />
+          <Route element={<AuthGuard />}>
+            <Route path="/add-workout" element={<AddWorkout />} />
+          </Route>
         </Routes>
         <Footer />
       </AuthProvider>
