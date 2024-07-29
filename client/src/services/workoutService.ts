@@ -24,3 +24,10 @@ export const create = async (
 
   return result;
 };
+
+export const getAll = async (): Promise<WorkoutType[]> => {
+  const response = await fetch(baseUrl);
+  const result = response.json();
+
+  return result;
+};

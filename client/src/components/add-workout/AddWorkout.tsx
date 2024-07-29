@@ -71,7 +71,7 @@ export default function AddWorkout() {
           onChange={onChange}
           value={values.description}
           cols={30}
-          rows={10}
+          rows={7}
           required
         ></textarea>
 
