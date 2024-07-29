@@ -2,7 +2,17 @@ import { useState } from "react";
 
 export default function useForm(
   submitHandler: any,
-  initialValues: { email: ""; password: ""; username?: ""; rePassword?: "" }
+  initialValues: {
+    email?: "";
+    password?: "";
+    username?: "";
+    rePassword?: "";
+    type?: "";
+    duration?: "";
+    imageUrl?: "";
+    difficulty?: "";
+    description?: "";
+  }
 ) {
   const [values, setValues] = useState(initialValues);
 

@@ -18,7 +18,7 @@ export default function Register() {
         <input
           type="email"
           name="email"
-          placeholder="Email"
+          placeholder="example@abv.bg"
           onChange={onChange}
           value={values.email}
           required
