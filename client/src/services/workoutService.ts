@@ -54,3 +54,12 @@ export const edit = async (
   const result = response.json();
   return result;
 };
+
+export const remove = async (workoutId: string | undefined) => {
+  const result = await fetch(`${baseUrl}${workoutId}`, {
+    method: "DELETE",
+    headers: options,
+  });
+
+  return result;
+};

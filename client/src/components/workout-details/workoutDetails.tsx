@@ -5,7 +5,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import * as workoutService from "../../services/workoutService";
 
 export default function WorkoutDetails() {
-  //   const navigate = useNavigate();
+  const navigate = useNavigate();
   const [workout, setWorkout] = useState<WorkoutType>();
   const { workoutId } = useParams();
 
@@ -13,6 +13,18 @@ export default function WorkoutDetails() {
     workoutService.getOne(workoutId).then((result) => setWorkout(result));
   }, [workoutId]);
   console.log(workoutId);
+
+  const deleteButtonClickHandler = async () => {
+    const hasConfirmed = confirm(
+      `Are you sure you want to delete practice for ${workout?.type} with ${workout?.duration} minutes duration?`
+    );
+
+    if (hasConfirmed) {
+      await workoutService.remove(workoutId);
+
+      navigate("/workouts");
+    }
+  };
 
   return (
     <div className="wrapper-workout-details">
@@ -38,7 +50,9 @@ export default function WorkoutDetails() {
               Edit
             </Link>
           </button>
-          <button className="delete-btn">Delete</button>
+          <button className="delete-btn" onClick={deleteButtonClickHandler}>
+            Delete
+          </button>
         </div>
       </div>
     </div>
