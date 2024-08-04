@@ -14,6 +14,7 @@ import LoggedGuard from "./components/guards/LoggedGuard";
 import About from "./components/about/About";
 import WorkoutList from "./components/workoutList/WourkoutList";
 import WorkoutDetails from "./components/workout-details/workoutDetails";
+import WorkoutEdit from "./components/edit-workout/workoutEdit";
 
 function App() {
   return (
@@ -25,11 +26,14 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/workouts" element={<WorkoutList />} />
           <Route path="/workouts/:workoutId" element={<WorkoutDetails />} />
+
           <Route element={<LoggedGuard />}>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
           </Route>
           <Route element={<AuthGuard />}>
+            {/* make owner guard */}
+            <Route path="/workouts/:workoutId/edit" element={<WorkoutEdit />} />
             <Route path="/add-workout" element={<AddWorkout />} />
             <Route path="/logout" element={<Logout />} />
           </Route>

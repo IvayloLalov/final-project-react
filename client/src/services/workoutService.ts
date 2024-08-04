@@ -40,3 +40,17 @@ export const getOne = async (
 
   return result;
 };
+
+export const edit = async (
+  workoutId: string | undefined,
+  workoutData: any
+): Promise<WorkoutType> => {
+  const response = await fetch(`${baseUrl}${workoutId}`, {
+    method: "PUT",
+    headers: options,
+    body: JSON.stringify(workoutData),
+  });
+
+  const result = response.json();
+  return result;
+};

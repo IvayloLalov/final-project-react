@@ -60,3 +60,12 @@
 .card-details {
   margin-top: 20px;
 }
+
+.card-body-details {
+  font-size: 0.8rem;
+  max-width: 150px;
+  /* height: 200px; */
+  height: auto;
+  padding-top: 25px;
+  overflow-wrap: break-word;
+}
