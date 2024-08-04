@@ -13,6 +13,7 @@ import AuthGuard from "./components/guards/AuthGuard";
 import LoggedGuard from "./components/guards/LoggedGuard";
 import About from "./components/about/About";
 import WorkoutList from "./components/workoutList/WourkoutList";
+import WorkoutDetails from "./components/workout-details/workoutDetails";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/workouts" element={<WorkoutList />} />
+          <Route path="/workouts/:workoutId" element={<WorkoutDetails />} />
           <Route element={<LoggedGuard />}>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />

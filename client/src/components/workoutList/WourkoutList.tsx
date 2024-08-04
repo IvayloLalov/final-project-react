@@ -16,8 +16,6 @@ export default function WorkoutList() {
       });
   }, []);
 
-  console.log(workouts);
-
   return (
     <div id="worklist-page">
       {workouts.map((workout) => (

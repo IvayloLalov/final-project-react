@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
 import { WorkoutType } from "../../../types/WorkoutType";
 
 export default function WorkListItem({
+  _id,
   type,
   imageUrl,
   duration,
@@ -13,11 +15,15 @@ export default function WorkListItem({
           <img src={imageUrl} />
         </div>
         <div className="card-text">
-          <p className="card-meal-type">{type}</p>
-          <h2 className="card-title">{duration}</h2>
-          <p className="card-body">{difficulty}</p>
+          <p className="card-meal-type">{type.toUpperCase()}</p>
+          <h2 className="card-title">{duration} minutes</h2>
+          <p className="card-body">{difficulty.toLowerCase()}</p>
         </div>
-        <div className="card-price">{duration}</div>
+        <div className="card-price">
+          <Link className="details-description" to={`/workouts/${_id}`}>
+            Description
+          </Link>
+        </div>
       </div>
     </>
   );

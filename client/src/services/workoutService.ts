@@ -1,7 +1,7 @@
 import { CreateWorkoutType } from "../types/CreateWorkoutType";
 import { WorkoutType } from "../types/WorkoutType";
 
-const baseUrl: string = "http://localhost:3030/data/workouts";
+const baseUrl: string = "http://localhost:3030/data/workouts/";
 const token: string | null = localStorage.getItem("accessToken");
 let options: any = {
   "Content-Type": "application/json",
@@ -27,6 +27,15 @@ export const create = async (
 
 export const getAll = async (): Promise<WorkoutType[]> => {
   const response = await fetch(baseUrl);
+  const result = response.json();
+
+  return result;
+};
+
+export const getOne = async (
+  workoutId: string | undefined
+): Promise<WorkoutType> => {
+  const response = await fetch(`${baseUrl}${workoutId}`);
   const result = response.json();
 
   return result;

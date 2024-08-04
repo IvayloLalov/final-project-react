@@ -12,7 +12,7 @@ export default function AddWorkout() {
       try {
         await workoutService.create(values);
 
-        navigate("/");
+        navigate("/workouts");
       } catch (err) {
         // Error notification
         console.log(err);
