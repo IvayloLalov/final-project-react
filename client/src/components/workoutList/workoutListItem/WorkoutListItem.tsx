@@ -19,11 +19,11 @@ export default function WorkListItem({
           <h2 className="card-title">{duration} minutes</h2>
           <p className="card-body">{difficulty.toLowerCase()}</p>
         </div>
-        <div className="card-price">
+        <button className="card-price">
           <Link className="details-description" to={`/workouts/${_id}`}>
             Description
           </Link>
-        </div>
+        </button>
       </div>
     </>
   );

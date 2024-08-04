@@ -5,3 +5,58 @@
   align-items: center;
   height: 100vh;
 }
+
+.card-text-details {
+  margin: -10px auto;
+  /* margin-bottom: -30px; */
+  height: fit-content;
+  width: 200px;
+  height: 300px;
+  background-color: #1d1c20;
+  color: #fff;
+  padding: 10px;
+  border-radius: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.card-price-details,
+.edit-btn,
+.delete-btn {
+  width: 70px;
+  height: 20px;
+  background-color: #0a2897;
+  color: #fff;
+  font-size: 0.7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.edit-btn {
+  margin-top: 10px;
+  background-color: #27b40a;
+  color: beige;
+}
+
+.delete-btn {
+  background-color: #970a0a;
+  color: bisque;
+}
+
+.card-details {
+  margin-top: 20px;
+}

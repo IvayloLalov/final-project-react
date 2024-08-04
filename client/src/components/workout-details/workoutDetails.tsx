@@ -15,19 +15,21 @@ export default function WorkoutDetails() {
 
   return (
     <div className="wrapper-workout-details">
-      <div className="card">
+      <div className="card-details">
         <div className="card-image">
           <img src={workout?.imageUrl} />
         </div>
-        <div className="card-text">
-          <p className="card-meal-type">{workout?.type.toUpperCase()}</p>
-          <h2 className="card-title">{workout?.duration} minutes</h2>
-          <p className="card-body">{workout?.difficulty.toLowerCase()}</p>
+        <div className="card-text-details">
+          <p className="card-body">{workout?.description}</p>
         </div>
-        <div className="card-price">
+        <button className="card-price-details">
           {/* <Link className="details-description" to={`/workouts/${_id}`} >
             Description
           </Link> */}
+        </button>
+        <div className="buttons">
+          <button className="edit-btn">Edit</button>
+          <button className="delete-btn">Delete</button>
         </div>
       </div>
     </div>
