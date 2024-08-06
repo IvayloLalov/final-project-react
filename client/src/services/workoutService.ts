@@ -5,9 +5,10 @@ const baseUrl: string = "http://localhost:3030/data/workouts/";
 const token: string | null = localStorage.getItem("accessToken");
 let options: any = {
   "Content-Type": "application/json",
-  "X-Authorization": null,
 };
 if (token) {
+  console.log(token, "token");
+
   options["X-Authorization"] = token;
 }
 

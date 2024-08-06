@@ -15,6 +15,7 @@ import About from "./components/about/About";
 import WorkoutList from "./components/workoutList/WourkoutList";
 import WorkoutDetails from "./components/workout-details/workoutDetails";
 import WorkoutEdit from "./components/edit-workout/workoutEdit";
+import EditGuard from "./components/guards/EditGuard";
 
 function App() {
   return (
@@ -33,7 +34,12 @@ function App() {
           </Route>
           <Route element={<AuthGuard />}>
             {/* make owner guard */}
-            <Route path="/workouts/:workoutId/edit" element={<WorkoutEdit />} />
+            <Route element={<EditGuard />}>
+              <Route
+                path="/workouts/:workoutId/edit"
+                element={<WorkoutEdit />}
+              />
+            </Route>
             <Route path="/add-workout" element={<AddWorkout />} />
             <Route path="/logout" element={<Logout />} />
           </Route>

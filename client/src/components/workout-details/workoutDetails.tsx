@@ -1,18 +1,21 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { WorkoutType } from "../../types/WorkoutType";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 import * as workoutService from "../../services/workoutService";
+import AuthContext from "../../contexts/authContext";
 
 export default function WorkoutDetails() {
   const navigate = useNavigate();
   const [workout, setWorkout] = useState<WorkoutType>();
   const { workoutId } = useParams();
+  const { userId } = useContext(AuthContext);
 
   useEffect(() => {
     workoutService.getOne(workoutId).then((result) => setWorkout(result));
   }, [workoutId]);
-  console.log(workoutId);
+  console.log(userId, "useerID");
+  console.log(workout?._ownerId, "ownerID");
 
   const deleteButtonClickHandler = async () => {
     const hasConfirmed = confirm(
@@ -41,19 +44,21 @@ export default function WorkoutDetails() {
             Description
           </Link> */}
         </button>
-        <div className="buttons">
-          <button className="edit-btn">
-            <Link
-              className="details-description"
-              to={`/workouts/${workoutId}/edit`}
-            >
-              Edit
-            </Link>
-          </button>
-          <button className="delete-btn" onClick={deleteButtonClickHandler}>
-            Delete
-          </button>
-        </div>
+        {userId === workout?._ownerId && (
+          <div className="buttons">
+            <button className="edit-btn">
+              <Link
+                className="details-description"
+                to={`/workouts/${workoutId}/edit`}
+              >
+                Edit
+              </Link>
+            </button>
+            <button className="delete-btn" onClick={deleteButtonClickHandler}>
+              Delete
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
