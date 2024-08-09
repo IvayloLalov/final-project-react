@@ -13,7 +13,7 @@ export default function WorkoutDetails() {
   const [workout, setWorkout] = useState<WorkoutType>();
   const [likes, setLikes] = useState<LikeType[]>([]);
   const { workoutId } = useParams();
-  const { userId } = useContext(AuthContext);
+  const { userId, isAuthenticated } = useContext(AuthContext);
   const [isAlreadyLiked, setIsAlreadyLiked] = useState<boolean>();
 
   useEffect(() => {
@@ -68,14 +68,16 @@ export default function WorkoutDetails() {
         <div className="card-text-details">
           <p className="card-body-details">{workout?.description}</p>
         </div>
-        {!isAlreadyLiked && !(userId === workout?._ownerId) && (
-          <button
-            className="card-price-details"
-            onClick={likeButtonClickHandler}
-          >
-            Like
-          </button>
-        )}
+        {isAuthenticated &&
+          !isAlreadyLiked &&
+          !(userId === workout?._ownerId) && (
+            <button
+              className="card-price-details"
+              onClick={likeButtonClickHandler}
+            >
+              Like
+            </button>
+          )}
         {userId === workout?._ownerId && (
           <div className="buttons">
             <button className="edit-btn">
