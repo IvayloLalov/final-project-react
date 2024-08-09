@@ -1446,7 +1446,19 @@
     sessions: {},
   };
   var seedData = {
-    workouts: {},
+    workouts: {
+      "4bbef71e-5d51-41aa-b87b-7e76c9ad44fa": {
+        _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+        type: "upper body",
+        duration: "45",
+        imageUrl:
+          "https://cdn.pixabay.com/photo/2017/08/07/14/02/man-2604149_1280.jpg",
+        difficulty: "medium",
+        description: "4 sets of 12 reps push-ups 4 sets of 10 reps pull-ups",
+        _createdOn: 1723063965556,
+        _id: "4bbef71e-5d51-41aa-b87b-7e76c9ad44fa",
+      },
+    },
     recipes: {
       "3987279d-0ad4-4afb-8ca9-5b256ae3b298": {
         _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",

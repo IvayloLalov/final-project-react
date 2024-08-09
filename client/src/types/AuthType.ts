@@ -5,5 +5,6 @@ export type AuthType = {
   username: String;
   email: String;
   userId: String;
+  accessToken: String;
   isAuthenticated: Boolean;
 };

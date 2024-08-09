@@ -12,6 +12,7 @@ const AuthContext = createContext<AuthType>({
   username: "",
   email: "",
   userId: "",
+  accessToken: "",
   isAuthenticated: false,
 });
 
@@ -26,6 +27,7 @@ export const AuthProvider = ({ children }: ContextProviderProps) => {
   const loginSubmitHandler = async (values: any) => {
     const result = await userService.login(values.email, values.password);
     setAuth(result);
+    console.log("result", result);
 
     localStorage.setItem("accessToken", result?.accessToken);
 
@@ -48,8 +50,8 @@ export const AuthProvider = ({ children }: ContextProviderProps) => {
     navigate("/");
   };
   const logoutHandler = () => {
-    setAuth({});
     localStorage.removeItem("accessToken");
+    setAuth({});
   };
 
   const values: AuthType = {
@@ -59,6 +61,7 @@ export const AuthProvider = ({ children }: ContextProviderProps) => {
     username: auth.username,
     email: auth.email,
     userId: auth._id,
+    accessToken: auth.accessToken,
     isAuthenticated: !!auth.accessToken,
   };
 
