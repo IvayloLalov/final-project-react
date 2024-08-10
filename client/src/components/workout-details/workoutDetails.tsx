@@ -17,16 +17,26 @@ export default function WorkoutDetails() {
   const [isAlreadyLiked, setIsAlreadyLiked] = useState<boolean>();
 
   useEffect(() => {
-    workoutService.getOne(workoutId).then((result) => setWorkout(result));
+    workoutService
+      .getOne(workoutId)
+      .then((result) => setWorkout(result))
+      .catch((err) => {
+        alert(`${err} occurred while fetching data.`);
+      });
 
-    likeService.getAll(workoutId).then((data) => {
-      setLikes(data);
-      console.log(data, "data");
+    likeService
+      .getAll(workoutId)
+      .then((data) => {
+        setLikes(data);
+        console.log(data, "data");
 
-      console.log(data.some((like) => like._ownerId === userId));
+        console.log(data.some((like) => like._ownerId === userId));
 
-      setIsAlreadyLiked(data.some((like) => like._ownerId === userId));
-    });
+        setIsAlreadyLiked(data.some((like) => like._ownerId === userId));
+      })
+      .catch((err) => {
+        alert(`${err} occurred while fetching data.`);
+      });
   }, [workoutId]);
 
   // console.log(userId, "useerID");
@@ -37,14 +47,18 @@ export default function WorkoutDetails() {
   console.log(isAlreadyLiked, "before click");
 
   const likeButtonClickHandler = async () => {
-    const result = await likeService.create(workoutId);
+    try {
+      const result = await likeService.create(workoutId);
 
-    // console.log(result, "like result");
-    setIsAlreadyLiked(true);
-    likes.length++;
-    // console.log(isAlreadyLiked, "after click");
-    navigate(`/workouts/${workoutId}`);
-    return result;
+      // console.log(result, "like result");
+      setIsAlreadyLiked(true);
+      likes.length++;
+      // console.log(isAlreadyLiked, "after click");
+      navigate(`/workouts/${workoutId}`);
+      return result;
+    } catch (error) {
+      throw error;
+    }
   };
 
   const deleteButtonClickHandler = async () => {
@@ -53,9 +67,13 @@ export default function WorkoutDetails() {
     );
 
     if (hasConfirmed) {
-      await workoutService.remove(workoutId);
+      try {
+        await workoutService.remove(workoutId);
 
-      navigate("/workouts");
+        navigate("/workouts");
+      } catch (error) {
+        throw error;
+      }
     }
   };
 

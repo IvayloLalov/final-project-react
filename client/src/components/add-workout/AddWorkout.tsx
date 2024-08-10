@@ -15,7 +15,9 @@ export default function AddWorkout() {
         navigate("/workouts");
       } catch (err) {
         // Error notification
-        console.log(err);
+        console.log(`Error: ${err}`);
+
+        throw err;
       }
     },
     {

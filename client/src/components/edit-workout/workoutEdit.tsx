@@ -16,7 +16,12 @@ export default function WorkoutEdit() {
   });
 
   useEffect(() => {
-    workoutService.getOne(workoutId).then((result) => setWorkout(result));
+    workoutService
+      .getOne(workoutId)
+      .then((result) => setWorkout(result))
+      .catch((err) => {
+        alert(`${err} occurred while fetching data.`);
+      });
   }, [workoutId]);
 
   const editGameSubmitHandler = async (e: any) => {
@@ -30,7 +35,9 @@ export default function WorkoutEdit() {
       navigate("/workouts");
     } catch (err) {
       // Error notification
-      console.log(err);
+      console.log(`Error: ${err}`);
+
+      throw err;
     }
   };
 

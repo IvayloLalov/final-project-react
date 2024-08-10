@@ -12,7 +12,7 @@ export default function WorkoutList() {
       .getAll()
       .then((result) => setWorkouts(result))
       .catch((err) => {
-        console.log(err);
+        alert(`${err} occurred while fetching data.`);
       });
   }, []);
 
@@ -23,7 +23,7 @@ export default function WorkoutList() {
       ))}
 
       {workouts.length === 0 && (
-        <h3 className="no-articles">No articles yet</h3>
+        <h3 className="no-articles">No workouts yet</h3>
       )}
     </div>
   );

@@ -25,29 +25,41 @@ export const AuthProvider = ({ children }: ContextProviderProps) => {
   const [auth, setAuth] = usePersistedState("auth", {});
 
   const loginSubmitHandler = async (values: any) => {
-    const result = await userService.login(values.email, values.password);
-    setAuth(result);
-    console.log("result", result);
+    try {
+      const result = await userService.login(values.email, values.password);
+      setAuth(result);
+      console.log("result", result);
 
-    localStorage.setItem("accessToken", result?.accessToken);
+      localStorage.setItem("accessToken", result?.accessToken);
 
-    navigate("/");
+      navigate("/");
+    } catch (error) {
+      console.log(`Error: ${error}`);
+
+      throw error;
+    }
   };
 
   const registerSubmitHandler = async (values: any) => {
-    const result = await userService.register(
-      values.email,
-      values.username,
-      values.password
-    );
+    try {
+      const result = await userService.register(
+        values.email,
+        values.username,
+        values.password
+      );
 
-    setAuth(result);
-    console.log("username", values.username);
-    console.log("result", result);
+      setAuth(result);
+      console.log("username", values.username);
+      console.log("result", result);
 
-    localStorage.setItem("accessToken", result?.accessToken);
+      localStorage.setItem("accessToken", result?.accessToken);
 
-    navigate("/");
+      navigate("/");
+    } catch (error) {
+      console.log(`Error: ${error}`);
+
+      throw error;
+    }
   };
   const logoutHandler = () => {
     localStorage.removeItem("accessToken");
