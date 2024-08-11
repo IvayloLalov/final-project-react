@@ -1,26 +1,48 @@
 import { useState } from "react";
 
-export default function useForm(
-  submitHandler: any,
-  initialValues: {
-    email?: "";
-    password?: "";
-    username?: "";
-    rePassword?: "";
-    type?: "";
-    duration?: "";
-    imageUrl?: "";
-    difficulty?: "";
-    description?: "";
-  }
-) {
-  const [values, setValues] = useState(initialValues);
+// export default function useForm(
+//   submitHandler: any,
+//   initialValues: {
+//     email?: "";
+//     password?: "";
+//     username?: "";
+//     rePassword?: "";
+//     type?: "";
+//     duration?: "";
+//     imageUrl?: "";
+//     difficulty?: "";
+//     description?: "";
+//   }
+// ) {
+//   const [values, setValues] = useState(initialValues);
 
-  // useEffect(() => {
-  //     setValues(initialValues);
-  // }, [initialValues])
+//   const onChange = (e: any) => {
+//     setValues((state) => ({
+//       ...state,
+//       [e.target.name]: e.target.value,
+//     }));
+//     console.log(e.target.value);
+//   };
 
-  const onChange = (e: any) => {
+//   const onSubmit = (e: any) => {
+//     e.preventDefault();
+
+//     submitHandler(values);
+//   };
+
+//   return {
+//     values,
+//     onChange,
+//     onSubmit,
+//   };
+// }
+
+export default function useForm<T>(submitHandler: Function, initialValues: T) {
+  const [values, setValues] = useState<T>(initialValues);
+
+  const onChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setValues((state) => ({
       ...state,
       [e.target.name]: e.target.value,
@@ -28,9 +50,8 @@ export default function useForm(
     console.log(e.target.value);
   };
 
-  const onSubmit = (e: any) => {
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     submitHandler(values);
   };
 
