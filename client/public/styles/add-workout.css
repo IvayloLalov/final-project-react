@@ -99,6 +99,7 @@
 .btn-block {
   width: 100%;
   display: block;
+  margin: 0;
 }
 
 .add-workout {
@@ -109,6 +110,7 @@
   width: 300px;
   height: 300px;
 }
+
 .add-workout h1 {
   color: #c6ca8df3;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -120,11 +122,11 @@
 .add-workout input,
 textarea {
   width: 100%;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
   background: rgba(238, 225, 225, 0.8);
   border: none;
   outline: none;
-  padding: 10px;
+  padding: 8px;
   font-size: 13px;
   color: #000000;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
