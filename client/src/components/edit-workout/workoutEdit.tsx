@@ -114,6 +114,13 @@ export default function WorkoutEdit() {
             >
               Edit
             </button>
+            <button
+              type="button"
+              className="btn btn-primary btn-block btn-large"
+              onClick={() => navigate(`/workouts/${workoutId}`)}
+            >
+              Close
+            </button>
           </div>
         </Form>
       )}

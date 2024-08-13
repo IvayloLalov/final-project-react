@@ -139,6 +139,13 @@ export default function AddWorkout() {
         >
           Create
         </button>
+        <button
+          type="submit"
+          className="btn btn-primary btn-block btn-large"
+          onClick={() => navigate("/workouts")}
+        >
+          Close
+        </button>
       </form>
     </div>
   );
