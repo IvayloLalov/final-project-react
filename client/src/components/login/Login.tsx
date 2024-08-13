@@ -9,11 +9,13 @@ export default function Login() {
   const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
     email: "",
     password: "",
+    flag: false,
   });
 
   interface FormValues {
     email: string;
     password: string;
+    flag: boolean;
   }
 
   const validate = (values: FormValues) => {
@@ -21,10 +23,12 @@ export default function Login() {
 
     if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
       errors.email = "Invalid email address";
+      errors.flag = true;
     }
 
     if (values.password.length < 5) {
       errors.password = "Password must be minimum 5 characters";
+      errors.flag = true;
     }
 
     return errors;
@@ -59,7 +63,11 @@ export default function Login() {
         {values.password.length > 0 && errors.password && (
           <div className="error">{errors.password}</div>
         )}
-        <button type="submit" className="btn btn-primary btn-block btn-large">
+        <button
+          type="submit"
+          className="btn btn-primary btn-block btn-large"
+          disabled={errors.flag}
+        >
           Let me in.
         </button>
       </form>

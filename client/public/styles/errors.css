@@ -19,3 +19,7 @@
   text-align: center;
   font-weight: bold;
 }
+
+.error-validation {
+  color: red;
+}

@@ -16,6 +16,7 @@
 
 .four_zero_four_bg h1 {
   font-size: 80px;
+  color: black;
 }
 
 .four_zero_four_bg h3 {
@@ -33,4 +34,5 @@
 .contant_box_404 {
   margin-top: -50px;
   text-align: center;
+  color: black;
 }

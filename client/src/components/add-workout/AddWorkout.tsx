@@ -26,6 +26,7 @@ export default function AddWorkout() {
       imageUrl: "",
       difficulty: "",
       description: "",
+      flag: false,
     }
   );
 
@@ -35,25 +36,30 @@ export default function AddWorkout() {
     imageUrl: string;
     difficulty: string;
     description: string;
+    flag: boolean;
   }
 
   const validate = (values: FormValues) => {
-    const errors: Partial<FormValues> = {};
+    const errors: Partial<FormValues> = { flag: false };
 
     if (values.type.length < 4) {
       errors.type = "Type must be minimum 5 characters";
+      errors.flag = true;
     }
 
     if (values.difficulty.length < 3) {
       errors.difficulty = "Difficulty must be minimum 3 characters";
+      errors.flag = true;
     }
 
     if (!/https?:\/\/.*.(png|jpeg|jpg)/is.test(values.imageUrl)) {
       errors.imageUrl = "Invalid image URL address";
+      errors.flag = true;
     }
 
     if (values.description.length < 20) {
       errors.description = "Description must be minimum 20 characters";
+      errors.flag = true;
     }
 
     return errors;
@@ -70,7 +76,7 @@ export default function AddWorkout() {
           name="type"
           placeholder="Type"
           onChange={onChange}
-          value={values.type}
+          value={values.type.toUpperCase()}
           required
         />
         {values.type.length > 0 && errors.type && (
@@ -81,7 +87,7 @@ export default function AddWorkout() {
           name="difficulty"
           placeholder="Difficulty"
           onChange={onChange}
-          value={values.difficulty}
+          value={values.difficulty.toLowerCase()}
           required
         />
         {values.difficulty.length > 0 && errors.difficulty && (
@@ -126,7 +132,11 @@ export default function AddWorkout() {
           <div className="error-workout">{errors.description}</div>
         )}
 
-        <button type="submit" className="btn btn-primary btn-block btn-large">
+        <button
+          type="submit"
+          className="btn btn-primary btn-block btn-large"
+          disabled={errors.flag}
+        >
           Create
         </button>
       </form>

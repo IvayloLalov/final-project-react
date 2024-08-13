@@ -4,6 +4,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import * as workoutService from "../../services/workoutService";
 import { CreateWorkoutType } from "../../types/CreateWorkoutType";
 
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+
 export default function WorkoutEdit() {
   const navigate = useNavigate();
   const { workoutId } = useParams();
@@ -24,82 +27,96 @@ export default function WorkoutEdit() {
       });
   }, [workoutId]);
 
-  const editGameSubmitHandler = async (e: any) => {
-    e.preventDefault();
-
-    const values = Object.fromEntries(new FormData(e.currentTarget));
-
+  const editWorkoutSubmitHandler = async (values: CreateWorkoutType) => {
     try {
       await workoutService.edit(workoutId, values);
-
       navigate("/workouts");
     } catch (err) {
       // Error notification
       console.log(`Error: ${err}`);
-
-      throw err;
     }
   };
 
-  const onChange = (e: any) => {
-    setWorkout((state: CreateWorkoutType) => ({
-      ...state,
-      [e.target.name]: e.target.value,
-    }));
+  const initialValues: CreateWorkoutType = {
+    type: workout.type,
+    duration: workout.duration,
+    imageUrl: workout.imageUrl,
+    description: workout.description,
+    difficulty: workout.difficulty,
   };
 
+  const validationSchema = Yup.object().shape({
+    type: Yup.string()
+      .required("Type is required")
+      .min(2, "Type must be at least 2 characters long"),
+    difficulty: Yup.string()
+      .required("Difficulty is required")
+      .min(2, "Difficulty must be at least 2 characters long"),
+    duration: Yup.number().required("Duration is required").positive(),
+    imageUrl: Yup.string()
+      .url("Must be a valid URL")
+      .required("Image URL is required"),
+    description: Yup.string().required("Description is required"),
+  });
+
   return (
-    <div className="add-workout">
-      <h1>Edit Workout</h1>
-      <form onSubmit={editGameSubmitHandler}>
-        <input
-          type="text"
-          name="type"
-          placeholder="Type"
-          onChange={onChange}
-          value={workout.type}
-          required
-        />
-        <input
-          type="text"
-          name="difficulty"
-          placeholder="Difficulty"
-          onChange={onChange}
-          value={workout.difficulty}
-          required
-        />
-        <input
-          type="number"
-          name="duration"
-          placeholder="Duration"
-          onChange={onChange}
-          value={workout.duration}
-          required
-        />
-        <input
-          type="text"
-          name="imageUrl"
-          placeholder="Image URL"
-          onChange={onChange}
-          value={workout.imageUrl}
-          required
-        />
-
-        <textarea
-          name="description"
-          id="description"
-          placeholder="Description"
-          onChange={onChange}
-          value={workout.description}
-          cols={30}
-          rows={7}
-          required
-        ></textarea>
-
-        <button type="submit" className="btn btn-primary btn-block btn-large">
-          Edit
-        </button>
-      </form>
-    </div>
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      onSubmit={editWorkoutSubmitHandler}
+      enableReinitialize
+    >
+      {({ isSubmitting }) => (
+        <Form>
+          <div className="add-workout">
+            <h1>Edit Workout</h1>
+            <Field type="text" name="type" placeholder="Type" />
+            <ErrorMessage
+              name="type"
+              component="div"
+              className="error-validation"
+            />
+            <Field type="text" name="difficulty" placeholder="Difficulty" />
+            <ErrorMessage
+              name="difficulty"
+              component="div"
+              className="error-validation"
+            />
+            <Field type="number" name="duration" placeholder="Duration" />
+            <ErrorMessage
+              name="duration"
+              component="div"
+              className="error-validation"
+            />
+            <Field type="text" name="imageUrl" placeholder="Image URL" />
+            <ErrorMessage
+              name="imageUrl"
+              component="div"
+              className="error-validation"
+            />
+            <Field
+              as="textarea"
+              name="description"
+              id="description"
+              placeholder="Description"
+              cols={30}
+              rows={7}
+            />
+            <ErrorMessage
+              name="description"
+              component="div"
+              className="error-validation"
+            />
+            <button
+              type="submit"
+              className="btn btn-primary btn-block btn-large"
+              disabled={isSubmitting}
+            >
+              Edit
+            </button>
+          </div>
+        </Form>
+      )}
+    </Formik>
   );
 }

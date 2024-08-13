@@ -15,9 +15,9 @@ export default function WorkListItem({
           <img src={imageUrl} />
         </div>
         <div className="card-text">
-          <p className="card-meal-type">{type.toUpperCase()}</p>
+          <p className="card-meal-type">{type}</p>
           <h2 className="card-title">{duration} minutes</h2>
-          <p className="card-body">{difficulty.toLowerCase()}</p>
+          <p className="card-body">{difficulty}</p>
         </div>
         <button className="card-price">
           <Link className="details-description" to={`/workouts/${_id}`}>

@@ -1,3 +1,7 @@
+#root h1 {
+  color: wheat;
+}
+
 header {
   position: fixed;
   top: 0;
