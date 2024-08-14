@@ -20,8 +20,8 @@ h3 {
   letter-spacing: 0.075ch;
   color: wheat;
   text-align: center;
-  --light-pos-x: 1; /* left: -1, center: 0, right: 1 */
-  --light-pos-y: -1; /* top: -1, center: 0, bottom: 1 */
+  --light-pos-x: 0.3; /* left: -1, center: 0, right: 1 */
+  --light-pos-y: -0.3; /* top: -1, center: 0, bottom: 1 */
 
   --rim-size: 0.02ch;
   --shadow-offset: 0.2ch;
