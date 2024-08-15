@@ -30,11 +30,11 @@ export default function EditGuard() {
   }, [workoutId]);
 
   if (loading) {
-    return <div>Loading...</div>; 
+    return <div>Loading...</div>;
   }
 
   if (error) {
-    return <div>{error}</div>; // display any error message
+    return <div>{error}</div>;
   }
 
   if (workout?._ownerId !== userId) {

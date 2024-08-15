@@ -39,7 +39,11 @@ export const AuthProvider = ({ children }: ContextProviderProps) => {
     }
   };
 
-  const registerSubmitHandler = async (values: any) => {
+  const registerSubmitHandler = async (values: {
+    email: string;
+    username: string;
+    password: string;
+  }) => {
     try {
       const result = await userService.register(
         values.email,

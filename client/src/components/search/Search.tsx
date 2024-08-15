@@ -1,14 +1,3 @@
-// export default function Search() {
-//   return (
-//     <>
-//       <div className="search">
-//         <input type="text" />
-//         <button>Search</button>
-//       </div>
-//     </>
-//   );
-// }
-
 import { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { WorkoutType } from "../../types/WorkoutType";
@@ -37,8 +26,6 @@ export default function Search() {
           workoutService
             .getAllBySearch(searchValue)
             .then((res) => setFilteredItems(res));
-
-          console.log(filteredItems);
         }}
       >
         {() => (

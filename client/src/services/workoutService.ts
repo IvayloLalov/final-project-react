@@ -1,27 +1,14 @@
 import { CreateWorkoutType } from "../types/CreateWorkoutType";
 import { WorkoutType } from "../types/WorkoutType";
 
-const baseUrl: string = "http://localhost:3030/data/workouts/";
-const token: string | null = localStorage.getItem("accessToken");
-let options: any = {
-  "Content-Type": "application/json",
-};
-if (token) {
-  console.log(token, "token");
+import * as request from "../lib/request";
 
-  options["X-Authorization"] = token;
-}
+const baseUrl: string = "http://localhost:3030/data/workouts/";
 
 export const create = async (
   workoutData: CreateWorkoutType
 ): Promise<WorkoutType> => {
-  const response = await fetch(baseUrl, {
-    method: "POST",
-    headers: options,
-    body: JSON.stringify(workoutData),
-  });
-
-  const result = response.json();
+  const result = await request.post(baseUrl, workoutData);
 
   return result;
 };
@@ -42,25 +29,24 @@ export const getOne = async (
   return result;
 };
 
+export const getAllBySearch = async (
+  search: string
+): Promise<WorkoutType[]> => {
+  const response = await fetch(`${baseUrl}?where=type%3D%22${search}%22`);
+  const result = response.json();
+
+  return result;
+};
+
 export const edit = async (
   workoutId: string | undefined,
   workoutData: any
 ): Promise<WorkoutType> => {
-  const response = await fetch(`${baseUrl}${workoutId}`, {
-    method: "PUT",
-    headers: options,
-    body: JSON.stringify(workoutData),
-  });
+  const result = await request.put(`${baseUrl}${workoutId}`, workoutData);
 
-  const result = response.json();
   return result;
 };
 
 export const remove = async (workoutId: string | undefined) => {
-  const result = await fetch(`${baseUrl}${workoutId}`, {
-    method: "DELETE",
-    headers: options,
-  });
-
-  return result;
+  request.remove(`${baseUrl}/${workoutId}`);
 };
