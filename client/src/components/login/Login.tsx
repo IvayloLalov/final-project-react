@@ -2,8 +2,6 @@ import { useContext } from "react";
 import AuthContext from "../../contexts/authContext";
 import useForm from "../../hooks/useForm";
 
-// import * as Yup from "yup";
-
 export default function Login() {
   const { loginSubmitHandler } = useContext(AuthContext);
   const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
@@ -68,7 +66,7 @@ export default function Login() {
           className="btn btn-primary btn-block btn-large"
           disabled={errors.flag}
         >
-          Let me in.
+          Let me in
         </button>
       </form>
     </div>

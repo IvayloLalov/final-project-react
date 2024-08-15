@@ -28,9 +28,6 @@ export default function WorkoutDetails() {
       .getAll(workoutId)
       .then((data) => {
         setLikes(data);
-        console.log(data, "data");
-
-        console.log(data.some((like) => like._ownerId === userId));
 
         setIsAlreadyLiked(data.some((like) => like._ownerId === userId));
       })
@@ -39,21 +36,12 @@ export default function WorkoutDetails() {
       });
   }, [workoutId]);
 
-  // console.log(userId, "useerID");
-  // console.log(workout?._ownerId, "ownerID");
-  // console.log(likes, "likes");
-  // setIsAlreadyLiked(likes.some((like) => like._ownerId === userId));
-
-  console.log(isAlreadyLiked, "before click");
-
   const likeButtonClickHandler = async () => {
     try {
       const result = await likeService.create(workoutId);
 
-      // console.log(result, "like result");
       setIsAlreadyLiked(true);
       likes.length++;
-      // console.log(isAlreadyLiked, "after click");
       navigate(`/workouts/${workoutId}`);
       return result;
     } catch (error) {

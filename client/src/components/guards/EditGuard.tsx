@@ -30,7 +30,7 @@ export default function EditGuard() {
   }, [workoutId]);
 
   if (loading) {
-    return <div>Loading...</div>; // or any loading spinner component
+    return <div>Loading...</div>; 
   }
 
   if (error) {

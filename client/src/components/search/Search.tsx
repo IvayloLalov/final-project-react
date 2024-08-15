@@ -17,18 +17,6 @@ import * as workoutService from "../../services/workoutService";
 import WorkListItem from "../workoutList/workoutListItem/WorkoutListItem";
 
 export default function Search() {
-  // Sample data items
-  //   const items: WorkoutType[] = [
-  //    { _ownerId: '',
-  //     type: '',
-  //     duration: '',
-  //     imageUrl: '',
-  //     difficulty: '',
-  //     description: '',
-  //     _createdOn: 0,
-  //     _id: ''}
-  //   ];
-
   const [filteredItems, setFilteredItems] = useState<WorkoutType[]>([]);
 
   return (
@@ -56,7 +44,6 @@ export default function Search() {
         {() => (
           <Form>
             <div>
-              {/* <label htmlFor="search">Search:</label> */}
               <Field className="search-input" name="search" type="text" />
               <ErrorMessage
                 name="search"

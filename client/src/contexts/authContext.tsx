@@ -28,7 +28,6 @@ export const AuthProvider = ({ children }: ContextProviderProps) => {
     try {
       const result = await userService.login(values.email, values.password);
       setAuth(result);
-      console.log("result", result);
 
       localStorage.setItem("accessToken", result?.accessToken);
 
@@ -49,8 +48,6 @@ export const AuthProvider = ({ children }: ContextProviderProps) => {
       );
 
       setAuth(result);
-      console.log("username", values.username);
-      console.log("result", result);
 
       localStorage.setItem("accessToken", result?.accessToken);
 

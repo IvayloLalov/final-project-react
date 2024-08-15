@@ -57,8 +57,8 @@ export default function AddWorkout() {
       errors.flag = true;
     }
 
-    if (values.description.length < 20) {
-      errors.description = "Description must be minimum 20 characters";
+    if (values.description.length < 10) {
+      errors.description = "Description must be minimum 10 characters";
       errors.flag = true;
     }
 
