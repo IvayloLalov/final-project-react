@@ -8,5 +8,6 @@ START APPLICATION
      node server.js
 
 ABOUT APPLICATION
+ 
   Web application based on React & TypeScript. Every user can see all workouts, use the search option, but only the registered users can add their own workouts, edit and delete 
   it. Like functionality is visible only for registered users who are not owners for the specific post.
