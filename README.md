@@ -1,10 +1,13 @@
 START APPLICATION
  * clone the repository
  * open terminal in VSC and write
+
      npm install
  * to start client-side write in the CLIENT folder 
+
      npm run dev
  * to start server write in the SERVER folder
+
      node server.js
 
 ABOUT APPLICATION
