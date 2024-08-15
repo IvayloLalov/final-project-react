@@ -1450,13 +1450,38 @@
       "4bbef71e-5d51-41aa-b87b-7e76c9ad44fa": {
         _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
         type: "upper body",
-        duration: "45",
+        duration: "25",
         imageUrl:
           "https://cdn.pixabay.com/photo/2017/08/07/14/02/man-2604149_1280.jpg",
         difficulty: "medium",
-        description: "4 sets of 12 reps push-ups 4 sets of 10 reps pull-ups",
+        description:
+          "4 sets of 12 reps push-ups, 4 sets of 15 reps burpees, 4 sets of 20 reps biceps curl",
         _createdOn: 1723063965556,
         _id: "4bbef71e-5d51-41aa-b87b-7e76c9ad44fa",
+      },
+      "4bbef71e-5d51-41aa-b87b-7e76c9ad45fa": {
+        _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+        type: "legs",
+        duration: "35",
+        imageUrl:
+          "https://www.nourishmovelove.com/wp-content/uploads/2022/10/sumo-squat-heel-lift-thigh-workout-scaled.jpg",
+        difficulty: "hard",
+        description:
+          "4 sets of 20 reps squats, 4 sets of 15 reps bulgarian split squads, 4 sets of 20 reps calf raises, 3 sets of 8 reps walking lunges",
+        _createdOn: 1723063965558,
+        _id: "4bbef71e-5d51-41aa-b87b-7e76c9ad45fa",
+      },
+      "4bbef71e-5d51-41aa-b87b-1e76c9ad45fa": {
+        _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+        type: "abdominals",
+        duration: "20",
+        imageUrl:
+          "https://media1.popsugar-assets.com/files/thumbor/Lwtuka_xDCWEHgIka07xGdC7gXI/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2019/02/05/716/n/1922729/eb8ce0785c59b5c10c5e57.09349242_/i/Quick--Home-Ab-Workout.jpg",
+        difficulty: "easy",
+        description:
+          "2 sets of 3 minutes plank, 4 sets of 30 reps crunches, 3 sets of 30 reps bicycle crunches",
+        _createdOn: 1723063965557,
+        _id: "4bbef71e-5d51-41aa-b87b-1e76c9ad45fa",
       },
     },
     recipes: {

@@ -32,10 +32,9 @@ export const AuthProvider = ({ children }: ContextProviderProps) => {
       localStorage.setItem("accessToken", result?.accessToken);
 
       navigate("/");
-    } catch (error) {
-      console.log(`Error: ${error}`);
-
-      throw error;
+    } catch (error: any) {
+      const err = Object.entries(error);
+      alert(err);
     }
   };
 
@@ -56,10 +55,9 @@ export const AuthProvider = ({ children }: ContextProviderProps) => {
       localStorage.setItem("accessToken", result?.accessToken);
 
       navigate("/");
-    } catch (error) {
-      console.log(`Error: ${error}`);
-
-      throw error;
+    } catch (error: any) {
+      const err = Object.entries(error);
+      alert(err);
     }
   };
   const logoutHandler = () => {

@@ -59,8 +59,9 @@ export default function WorkoutDetails() {
         await workoutService.remove(workoutId);
 
         navigate("/workouts");
-      } catch (error) {
-        throw error;
+      } catch (error: any) {
+        const err = Object.entries(error);
+        alert(err);
       }
     }
   };

@@ -13,11 +13,9 @@ export default function AddWorkout() {
         await workoutService.create(values);
 
         navigate("/workouts");
-      } catch (err) {
-        // Error notification
-        console.log(`Error: ${err}`);
-
-        throw err;
+      } catch (error: any) {
+        const err = Object.entries(error);
+        alert(err);
       }
     },
     {

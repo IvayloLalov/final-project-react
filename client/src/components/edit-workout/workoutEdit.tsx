@@ -22,7 +22,8 @@ export default function WorkoutEdit() {
     workoutService
       .getOne(workoutId)
       .then((result) => setWorkout(result))
-      .catch((err) => {
+      .catch((error) => {
+        const err = Object.entries(error);
         alert(`${err} occurred while fetching data.`);
       });
   }, [workoutId]);
@@ -31,9 +32,9 @@ export default function WorkoutEdit() {
     try {
       await workoutService.edit(workoutId, values);
       navigate("/workouts");
-    } catch (err) {
-      // Error notification
-      console.log(`Error: ${err}`);
+    } catch (error: any) {
+      const err = Object.entries(error);
+      alert(err);
     }
   };
 
